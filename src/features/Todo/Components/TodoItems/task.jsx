@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import MyComponent from "./TodoItems/abc";
 
 Task.propTypes = {
   value: PropTypes.object,
@@ -23,7 +24,8 @@ function Task(props) {
         }}
       />
       {!checkupdate ? value.title : ""}
-      <button
+      <MyComponent />
+      {/* <button
         onClick={() => {
           Setcheckupdate(!checkupdate);
         }}
@@ -32,7 +34,7 @@ function Task(props) {
       </button>
       <button onClick={deleteTodoItem}>
         {!checkupdate ? "Delete" : "Cancel"}
-      </button>
+      </button> */}
     </li>
   );
 }

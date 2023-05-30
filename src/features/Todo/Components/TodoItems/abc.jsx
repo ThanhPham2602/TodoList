@@ -1,39 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+// import "./style.css";
 
-function MyComponent() {
+MyComponent.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.func,
+  onUpdate: PropTypes.func,
+  onDelete: PropTypes.func,
+};
+function MyComponent(props) {
+  const { value, change, deleteTodoItem, updateTodoItem } = props;
+  // console.log("value", value);
   const [isEditing, setIsEditing] = useState(false);
+  const [newTodo, setNewTodo] = useState("");
 
-  const handleUpdateSave = () => {
+  const handleUpdateSave = (newTodo, id) => {
     if (isEditing) {
-      
-      console.log('Save data');
+      // Xử lý lưu dữ liệu
+      // console.log("object", id);
+      if (newTodo.length > 0) {
+        updateTodoItem(newTodo, id);
+        // onUpdate={() => {
+        //   updateItem(newTodo, id);
+        // }}
+        console.log("Save data:", newTodo);
+        console.log("object id", id);
+        setIsEditing(false);
+      }
     } else {
-      
-      console.log('Start editing');
+      // Bắt đầu chỉnh sửa
+
+      setIsEditing(true);
     }
-    setIsEditing(!isEditing);
   };
 
   const handleDeleteCancel = () => {
     if (isEditing) {
-      
-      console.log('Cancel editing');
+      // Hủy chỉnh sửa
+      setIsEditing(false);
+
+      console.log("Cancel editing");
     } else {
-      
-      console.log('Delete data');
+      deleteTodoItem();
+      console.log("Delete data");
     }
-    setIsEditing(false);
   };
 
   return (
-    <div>
-      <button onClick={handleUpdateSave}>
-        {isEditing ? 'Save' : 'Update'}
-      </button>
-      <button onClick={handleDeleteCancel}>
-        {isEditing ? 'Cancel' : 'Delete'}
-      </button>
-    </div>
+    <li className="abcLi">
+      <div>
+        {isEditing ? (
+          <input
+            type="text"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+          />
+        ) : (
+          <input
+            type="checkbox"
+            checked={value.status === "checked" ? true : false}
+            onChange={(value) => {
+              change(value.target.checked);
+            }}
+          />
+        )}
+        {isEditing ? "" : value.title}
+        <button
+          onClick={
+            // isEditing
+            //   ? () => handleUpdateSave(newTodo, value.id)
+            //   : () => console.log("123")
+            () => handleUpdateSave(newTodo, value.id)
+          }
+        >
+          {isEditing ? "Save" : "Update"}
+        </button>
+        <button onClick={handleDeleteCancel}>
+          {isEditing ? "Cancel" : "Delete"}
+        </button>
+      </div>
+    </li>
   );
 }
 

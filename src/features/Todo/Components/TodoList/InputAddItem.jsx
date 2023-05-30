@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
+import "./style.css";
 InputAddNew.propTypes = {
   onAdd: PropTypes.func,
 };
@@ -17,13 +17,16 @@ function InputAddNew(props) {
     return true;
   };
   return (
-    <div>
+    <div className="InputAddItem">
       <input
+        className="Input"
         type="text"
         onChange={(e) => setNewtodo(e.target.value)}
         value={newtodo}
       />
-      <button onClick={addNewItem}>Add</button>
+      <button className="buttonAdd" onClick={addNewItem}>
+        Add
+      </button>
     </div>
   );
 }

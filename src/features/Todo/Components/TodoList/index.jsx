@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Task from "../TodoItems/task";
+import "./style.css";
 TodoList.propTypes = {
   todolist: PropTypes.array,
   onUpdate: PropTypes.func,
@@ -10,10 +11,10 @@ TodoList.propTypes = {
 
 function TodoList(props) {
   const { todolist, onDelete, onChange, onUpdate } = props;
-  console.log("todolist", todolist);
+  // console.log("todolist", todolist);
 
   return (
-    <ul>
+    <ul className="todolist">
       {todolist.map((value, index) => (
         <Task
           key={index}
@@ -21,8 +22,8 @@ function TodoList(props) {
           change={(e) => {
             onChange(value.id, e);
           }}
-          updateTodoItem={() => {
-            onUpdate(value);
+          updateTodoItem={(newTodo, id) => {
+            onUpdate(newTodo, id);
           }}
           deleteTodoItem={() => {
             onDelete(value.id);

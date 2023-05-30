@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // import PropTypes from "prop-types";
 import TodoList from "../Components/TodoList";
 import InputAddNew from "../Components/TodoList/InputAddItem";
+import "./style.css";
+import Footer from "../Components/TodoList/Footer";
 
 TodoTable.propTypes = {
   //   todoList: PropTypes.array.isRequired,
@@ -30,6 +32,9 @@ function TodoTable(props) {
     const updateTodoList = todoList.filter((todoList) => todoList.id !== id);
     setTodoList(updateTodoList);
   };
+  const clearAll = () => {
+    setTodoList([]);
+  };
 
   const handleCheckClick = (id, status) => {
     console.log("idUP", id);
@@ -44,34 +49,35 @@ function TodoTable(props) {
     };
     setTodoList(newTodoList);
   };
+  const countSelected = todoList.filter(
+    (value) => value.status === "checked"
+  ).length;
 
-  const handleUpdateItem = (dataUpdate) => {
-    console.log("dataUP", dataUpdate);
-    const updatedTodoList = todoList.map((value) => {
-      if (value.id === dataUpdate.id) {
-        return {
-          ...value,
-          title: dataUpdate.title,
-        };
-      }
-
-      return value;
-    });
-    setTodoList(updatedTodoList);
+  const handleUpdateItem = (newTodo, id) => {
+    console.log("id", id);
+    console.log("newtodo", newTodo);
+    const index = todoList.findIndex((value) => value.id === id);
+    console.log("ĩnx", index);
+    const newTodoList = [...todoList];
+    console.log("newtodo", newTodo);
+    newTodoList[index] = {
+      ...newTodoList[index],
+      title: (newTodoList[index].title = newTodo),
+    };
+    setTodoList(newTodoList);
   };
 
   return (
     <div className="TodoTable">
-      <div>
-        <h2>I'm To Do List</h2>
-        <InputAddNew onAdd={handleAddTodo} />
-        <TodoList
-          todolist={todoList}
-          onDelete={handleDeleteItem}
-          onUpdate={handleUpdateItem}
-          onChange={handleCheckClick}
-        />
-      </div>
+      <h2 className="hh2">I'm To Do List</h2>
+      <InputAddNew onAdd={handleAddTodo} />
+      <TodoList
+        todolist={todoList}
+        onDelete={handleDeleteItem}
+        onUpdate={handleUpdateItem}
+        onChange={handleCheckClick}
+      />
+      <Footer countSelected={countSelected} clearAll={clearAll} />
     </div>
   );
 }

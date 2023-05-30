@@ -1,0 +1,27 @@
+.TodoTable {
+  position: absolute;
+  width: 1000px;
+  height: 670px;
+  left: 286px;
+  top: 151px;
+  
+  background: rgba(14, 199, 38, 0.59);
+  box-shadow: 0px 0px 4px rgba(0, 23, 71, 0.15);
+  border-radius: 32px;
+}
+.hh2{
+position: absolute;  
+width: 389px;
+height: 57px;
+left: 56px;
+top: 128px;
+
+font-family: 'Rubik';
+font-style: normal;
+font-weight: 600;
+font-size: 48px;
+line-height: 57px;
+
+letter-spacing: 0.01em;
+  color: #11175E;
+}

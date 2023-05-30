@@ -23,15 +23,27 @@ function Task(props) {
         }}
       />
       {!checkupdate ? value.title : ""}
-      <button
-        onClick={() => {
-          Setcheckupdate(!checkupdate);
-        }}
-      >
-        {!checkupdate ? "Update" : "Save"}
-      </button>
+      {!checkupdate ? (
+        <button
+          onClick={() => {
+            Setcheckupdate(!checkupdate);
+          }}
+        >
+          Update
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            Setcheckupdate(!checkupdate);
+          }}
+        >
+          SAVE
+        </button>
+      )}
+
       <button onClick={deleteTodoItem}>
-        {!checkupdate ? "Delete" : "Cancel"}
+        {/* {!checkupdate ? "Delete" : "Cancel"} */}
+        Delete
       </button>
     </li>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import MyComponent from "./abc";
+import "./style.css";
 
 Task.propTypes = {
   value: PropTypes.object,

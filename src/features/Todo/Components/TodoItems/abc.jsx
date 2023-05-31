@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import "./style.css";
+import "./style.css";
 
 MyComponent.propTypes = {
   value: PropTypes.object,
@@ -48,36 +48,47 @@ function MyComponent(props) {
 
   return (
     <li className="abcLi">
-      <div>
+      <div className="task">
         {isEditing ? (
           <input
+            className="updateinput"
             type="text"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
           />
         ) : (
-          <input
-            type="checkbox"
-            checked={value.status === "checked" ? true : false}
-            onChange={(value) => {
-              change(value.target.checked);
-            }}
-          />
+          <div>
+            <input
+              className="inputcheckmark"
+              type="checkbox"
+              checked={value.status === "checked" ? true : false}
+              onChange={(value) => {
+                change(value.target.checked);
+              }}
+            />{" "}
+            <span class="checkmark"></span>
+            {/* <span className="checkmark::after"></span> */}
+          </div>
         )}
-        {isEditing ? "" : value.title}
-        <button
-          onClick={
-            // isEditing
-            //   ? () => handleUpdateSave(newTodo, value.id)
-            //   : () => console.log("123")
-            () => handleUpdateSave(newTodo, value.id)
-          }
-        >
-          {isEditing ? "Save" : "Update"}
-        </button>
-        <button onClick={handleDeleteCancel}>
-          {isEditing ? "Cancel" : "Delete"}
-        </button>
+        <div className="actionbutton">
+          <span className="title">{isEditing ? "" : value.title}</span>
+          <div>
+            <button
+              className="button"
+              onClick={
+                // isEditing
+                //   ? () => handleUpdateSave(newTodo, value.id)
+                //   : () => console.log("123")
+                () => handleUpdateSave(newTodo, value.id)
+              }
+            >
+              {isEditing ? "Save" : "Update"}
+            </button>
+            <button className="button" onClick={handleDeleteCancel}>
+              {isEditing ? "Cancel" : "Delete"}
+            </button>
+          </div>
+        </div>
       </div>
     </li>
   );

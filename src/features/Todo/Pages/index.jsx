@@ -69,7 +69,7 @@ function TodoTable(props) {
 
   return (
     <div className="TodoTable">
-      <h2 className="hh2">I'm To Do List</h2>
+      <h2 className="hh2">Hi! I'm To Do List</h2>
       <InputAddNew onAdd={handleAddTodo} />
       <TodoList
         todolist={todoList}
@@ -77,6 +77,7 @@ function TodoTable(props) {
         onUpdate={handleUpdateItem}
         onChange={handleCheckClick}
       />
+      <div className="line"></div>
       <Footer countSelected={countSelected} clearAll={clearAll} />
     </div>
   );

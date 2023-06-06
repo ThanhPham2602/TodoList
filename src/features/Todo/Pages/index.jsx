@@ -41,6 +41,7 @@ function TodoTable(props) {
     console.log("staUP", status);
     const index = todoList.findIndex((value) => value.id === id);
     console.log("index", index);
+
     const newTodoList = [...todoList];
 
     newTodoList[index] = {

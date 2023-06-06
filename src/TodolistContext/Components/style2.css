@@ -1,0 +1,104 @@
+.abcLi{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+}
+
+.inputcheckmark{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 31px;
+    width: 31px;
+}
+.checkmark{
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+  background-color: rgba(245, 245, 245, 0.59);
+  border-radius: 50%;
+
+    font-size: 26px;
+
+    cursor: pointer;
+    margin-right: 20px;
+}
+.abcLi input:checked ~ .checkmark {
+    background-color: black;
+}
+.abcLi .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: 2px solid #FFFFFF;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+.task{
+    display: flex;
+    width: 80%;
+
+    margin-bottom: 10px;
+}
+.title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 60;
+    font-size: 20px;
+    line-height: 22px;
+
+    letter-spacing: 0.01em;
+font-feature-settings: 'liga' off;
+
+margin-right: 20px;
+
+color: #001747;
+}
+.actionbutton{
+    display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.button{
+    background-color: #2D70FD;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    margin-right: 20px;
+
+    width: 112px;
+height: 44px;
+
+    padding: 12px 20px;
+    gap: 8px;
+    font-size: 18px;
+
+}
+.updateinput{
+    width: 100%;
+    height: 36px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 26px;
+    
+  /* padding: 10px; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
